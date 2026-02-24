@@ -64,17 +64,17 @@ export default function App() {
       >
         {/* 1 — About */}
         <Card className="rounded-3xl bg-white dark:bg-[#2c2540] shadow-none xl:col-start-1 xl:col-span-2 xl:row-start-1">
-          <CardContent className="grid gap-6">
+          <CardContent className="grid gap-5">
             <div>
               <img
                 src="/avatar.png"
-                alt="Jenifer"
+                alt="Jenifer's avatar"
                 className="w-25 h-30 border-0 dark:border-[#b8a0ff]"
               />
             </div>
             <div>
               <p className="leading-7 letter-spacing-[0.5px] font-body text-lg">
-                {strings.im} <AuroraText className="text-4xl font-display dark:text-[#8f6fc4]">Jenifer</AuroraText>{strings.about}
+                {strings.im} <span className="text-4xl font-display dark:text-[#8f6fc4]">Jenifer</span>{strings.about}
 
               </p>
             </div>
