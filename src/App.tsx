@@ -17,6 +17,8 @@ import {
   SiMailboxdotorg,
 } from "react-icons/si"
 
+import { useLanguage } from "@/hooks/useLanguage"
+
 const techStack = [
   { name: "HTML5", icon: SiHtml5 },
   { name: "CSS3", icon: SiCss3 },
@@ -44,6 +46,9 @@ function TechGrid() {
 }
 
 export default function App() {
+
+  const { language, changeLanguage, AVAILABLE_LANGUAGES, strings } = useLanguage()
+
   return (
     <main className="font-body min-h-screen bg-[#f3efef] dark:bg-[#1b172a] px-6 md:px-12 py-10 text-black dark:text-[#e1d9ff]">
       <section
@@ -69,7 +74,8 @@ export default function App() {
             </div>
             <div>
               <p className="leading-7 letter-spacing-[0.5px] font-body text-lg">
-                Soy <AuroraText className="text-4xl font-display dark:text-[#8f6fc4]">Jenifer</AuroraText>, desarrolladora front-end. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consequat rhoncus odio, sit amet porttitor mauris dictum vitae.
+                {strings.im} <AuroraText className="text-4xl font-display dark:text-[#8f6fc4]">Jenifer</AuroraText>{strings.about}
+
               </p>
             </div>
           </CardContent>
@@ -78,10 +84,25 @@ export default function App() {
         {/* 2 — Language */}
         <Card className="rounded-3xl bg-white dark:bg-[#2c2540] shadow-none flex items-center justify-center xl:col-start-3 xl:row-start-1">
           <CardContent className="text-center">
-            <p className="text-8xl font-display dark:text-[#b8a0ff]">ES</p>
-            <div className="text-sm mt-2 flex gap-3 justify-center">
-              <span className="cursor-pointer text-xl dark:text-[#9b8cff]">EN</span>
-              <span className="font-semibold text-xl dark:text-[#b8a0ff]">ES</span>
+            <p className="text-8xl font-display dark:text-[#b8a0ff]">
+              {language.toUpperCase()}
+            </p>
+
+            <div className="text-sm mt-2 flex gap-6 justify-center">
+              {AVAILABLE_LANGUAGES.map((lang) => {
+                const isActive = lang === language
+
+                return (
+                  <span
+                    key={lang}
+                    onClick={() => changeLanguage(lang)}
+                    className={`cursor-pointer text-xl ${isActive ? "font-semibold scale-125" : "opacity-50"
+                      }`}
+                  >
+                    {lang.toUpperCase()}
+                  </span>
+                )
+              })}
             </div>
           </CardContent>
         </Card>
@@ -92,7 +113,7 @@ export default function App() {
             <div>
               <h2 className="text-3xl font-bold font-display mb-7">Github</h2>
               <p className="text-lg">
-                Mi perfil de Github, donde subo todos mis proyectos.
+                {strings.githubDesc}
               </p>
             </div>
             <Button size="icon" variant="secondary" className="rounded-full w-10 h-10 absolute bottom-6 left-6 cursor-pointer z-10">
@@ -121,10 +142,11 @@ export default function App() {
           <CardContent className="flex flex-col justify-end h-full">
             <div>
               <h2 className="text-3xl font-bold font-display mb-7">
-                Mis proyectos
+                {strings.projectsTitle}
               </h2>
+
               <p className="text-lg mb-12">
-                Aquí encontrarás algunos de mis proyectos personales.
+                {strings.projectsDesc}
               </p>
             </div>
             <Button size="icon" variant="secondary" className="rounded-full w-10 h-10 cursor-pointer">
@@ -141,7 +163,7 @@ export default function App() {
 
         {/* 8 — Dark mode */}
         <Card className="rounded-3xl bg-white dark:bg-[#2c2540] shadow-none flex items-center justify-center xl:col-start-4 xl:row-start-3">
-          <AnimatedThemeToggler className="cursor-pointer"/>
+          <AnimatedThemeToggler className="cursor-pointer" />
         </Card>
 
       </section>
