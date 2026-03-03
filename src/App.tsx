@@ -59,6 +59,7 @@ export default function App() {
       </header>
 
       <section
+        aria-label="Portfolio sections cards"
         className="
           grid gap-4 justify-center mx-auto
           grid-cols-[repeat(2,164px)]
@@ -139,7 +140,7 @@ export default function App() {
                     key={lang}
                     onClick={() => changeLanguage(lang)}
                     className={`cursor-pointer text-base md:text-lg ${
-                      isActive ? "font-semibold scale-125" : "opacity-50"
+                      isActive ? "font-semibold scale-125 text-[#352949]" : "text-gray-500 dark:text-gray-400"
                     }`}
                   >
                     {lang.toUpperCase()}
@@ -171,6 +172,7 @@ export default function App() {
             </div>
 
             <Button
+              aria-label="Go to Github profile" 
               size="icon"
               variant="secondary"
               className="rounded-full w-10 h-10 absolute bottom-6 left-6 z-10"
@@ -253,7 +255,7 @@ export default function App() {
 
         {/* EMAIL */}
         <Card className="rounded-3xl bg-white dark:bg-[#2c2540] shadow-none flex items-center justify-center p-6">
-          <a href="mailto:jbenaventzapata@gmail.com" target="_blank">
+          <a href="mailto:jbenaventzapata@gmail.com" target="_blank" aria-label="Send email">
             <SiMailboxdotorg className="text-[54px] md:text-[60px] xl:text-[90px] text-[#62CBDB] dark:text-[#3aa6b8]" />
           </a>
         </Card>
@@ -263,7 +265,8 @@ export default function App() {
           <a
             href="https://www.linkedin.com/in/jenifer-benavent-zapata"
             target="_blank"
-          >
+             aria-label="Go to LinkedIn profile"
+            >
             <SiLinkedin className="text-[54px] md:text-[60px] xl:text-[90px] text-white" />
           </a>
         </Card>
