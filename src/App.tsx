@@ -94,7 +94,7 @@ export default function App() {
 
             <p
               className="
-                text-lg    
+                text-base    
                 md:text-lg  
                 xl:text-lg
                 leading-relaxed
