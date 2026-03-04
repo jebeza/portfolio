@@ -169,3 +169,7 @@
     animation: none;
     mix-blend-mode: normal;
 }
+
+.card-transition {
+  transition: transform 0.3s, opacity 0.3s;
+}
