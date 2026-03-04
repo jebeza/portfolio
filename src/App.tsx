@@ -19,6 +19,7 @@ import {
 } from "react-icons/si";
 
 import { useLanguage } from "@/hooks/useLanguage";
+import Header from "./components/layout/Header";
 
 const techStack = [
   { name: "HTML5", icon: SiHtml5 },
@@ -259,42 +260,10 @@ export default function App() {
 
   return (
     <main className="font-body min-h-screen bg-[#f3efef] dark:bg-[#1b172a] px-6 md:px-12 py-10 text-black dark:text-[#e1d9ff]">
-      <header className="flex flex-col items-center justify-between mb-10 max-w-full">
-        <AuroraText className="text-4xl md:text-4xl xl:text-5xl font-display">
-          Jenifer
-        </AuroraText>
-
-        <nav
-          className="flex gap-2 mt-4 p-1.25 rounded-4xl bg-black/5 dark:bg-white/10"
-          aria-label="Filter portfolio sections"
-        >
-          {["All", "About", "Projects", "Others"].map((cat) => {
-            const isActive =
-              activeCategory === cat || (cat === "All" && !activeCategory);
-
-            return (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat === "All" ? null : cat)}
-                aria-current={isActive ? "true" : undefined}
-                className={`
-                  flex items-center h-8 px-4 rounded-[50px]
-                  text-[rgb(13,17,23)] dark:text-[#e1d9ff]
-                  transition-opacity duration-300
-                  cursor-pointer
-                  ${
-                    isActive
-                      ? "bg-white dark:bg-[#8f6fc4] font-body"
-                      : "opacity-60 hover:opacity-100"
-                  }
-                `}
-              >
-                {cat}
-              </button>
-            );
-          })}
-        </nav>
-      </header>
+      <Header
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
+      />
 
       {/* Grid de Cards */}
       <section
